@@ -18,8 +18,8 @@ On HeroHistory, users will be able to:
 
 ## Wireframes:
 
-![Splash Page](./)
-![Movie/Character Page](movie_page.png)
+![Splash Page](https://github.com/cschreger/HeroHistory/blob/master/images/splash_page.png)
+![Movie/Character Page](https://github.com/cschreger/HeroHistory/blob/master/images/movie_page.png)
 
 ## Implementation Schedule:
 
