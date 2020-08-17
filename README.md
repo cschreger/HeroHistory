@@ -6,15 +6,15 @@ HeroHistory is a data visualization site meant to distill the information about 
 
 On HeroHistory, users will be able to:
 
-[] View data about a character or generalized informations about superheroes (gender breakdown, studio/publisher, year of initial publication, associated media, etc.)
+- [] View data about a character or generalized informations about superheroes (gender breakdown, studio/publisher, year of initial publication, associated media, etc.)
 
-[] Display information about a specific hero
+- [] Display information about a specific hero
 
-[] View data about a movie or generalized information about superhero movies (box office, year of release, studios, starring characters)
+- [] View data about a movie or generalized information about superhero movies (box office, year of release, studios, starring characters)
 
-[] Display infomation about a specific hero
+- [] Display infomation about a specific hero
 
-[] Splash page main visualization (node tree) 
+- [] Splash page main visualization (node tree) 
 
 ## Wireframes:
 
