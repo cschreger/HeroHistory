@@ -17,7 +17,9 @@ On HeroHistory, users will be able to:
 [] Splash page main visualization (node tree) 
 
 ## Wireframes:
-![Movie Page](movie_page.png)
+
+![Splash Page](splash_page)
+![Movie/Character Page](movie_page.png)
 
 ## Implementation Schedule:
 
