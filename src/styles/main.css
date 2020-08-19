@@ -1,11 +1,14 @@
 body {
-  background-color: #3c3c3c;
   color: #cfcfcf;
+  margin: 100px;
 }
 div {
   line-height: 15px;
   margin-bottom: 3px;
-  background-color: grey;
+}
+
+.header-bar {
+  display: flex
 }
 
 h1 {

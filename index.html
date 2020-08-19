@@ -1,3 +1,4 @@
+<!-- citing all data -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +16,7 @@
     }
 
     svg text {
-        fill:white;
+        fill:black;
         font: 10px sans-serif;
         text-anchor: end;
     }
@@ -27,13 +28,17 @@
 
 <body>
     <script src="./dist/main.js"></script>
-    <img class="logo" src="./images//favicon.png">
-    <h1 class="title">Welcome to HeroHistory!</h1>
+    <div class="header-bar">
+        <img class="logo" src="./images//favicon.png">
+    </div>
+    <div>
+        <button>Year-By-Year Breakdown (Marvel)</button>
+    </div>
     <div id="donut">
         <svg id="donut-svg"></svg>
     </div>
-    <button>Year-By-Year Breakdown (Marvel)</button>
-    <!-- <svg id="svg2" width="1200" height="900"></svg> -->
+    <div id="bubble"></div>
+    <svg id="svg2" width="1200" height="900"></svg>
 
     <script>
         const total = [
@@ -68,8 +73,6 @@
             .outerRadius(radius);
 
         const pie = d3.pie()
-            // .startAngle(1.1 * Math.PI)
-            // .endAngle(3.1 * Math.PI)
             .value(function (d) {
                 return d.count
             })
@@ -87,9 +90,25 @@
             .attr('fill', function (d, i) {
                 return color(d.data.title)
             })
-            .attr('transform', 'translate(0,0)')
             .on("mouseover", onMouseOver)
-            .on("mouseout", onMouseOut);
+            .on("mouseout", onMouseOut)
+            .attr('transform', 'translate(0,0)')
+            .transition()
+            .ease(d3.easeLinear)
+            .duration(1700)
+            .attrTween("d", tweenPie)
+
+        svg.append("text")
+                .attr("transform", "translate(100,0)")
+                .attr("x", -25)
+                .attr("y", 50)
+                .attr("font-size", "24px")
+                .text("Character gender (All Publishers)")
+      
+        function tweenPie(b) {
+            const i = d3.interpolate({ startAngle: 1.1 * Math.PI, endAngle: 1.1 * Math.PI }, b);
+            return function (t) { return arc(i(t)); };
+        }
 
         function onMouseOver(d,i) {
             d3.select(this).transition()
@@ -113,8 +132,8 @@
                 .style('opacity', 0)
         }
 
-        const legendRectSize = 13;
-        const legendSpacing = 7;
+        const legendRectSize = 10;
+        const legendSpacing = 11;
         
         const legend = svg.selectAll('.legend')
             .data(color.domain())
@@ -137,27 +156,24 @@
             .attr('r', '.5rem')
 
         legend.append('text')
-            .attr('x', legendRectSize + legendSpacing)
-            .attr('y', legendRectSize - legendSpacing)
+            .attr('x', legendRectSize + legendSpacing + 25)
+            .attr('y', legendRectSize - legendSpacing + 3)
             .text(function (d) {
                 return d;
             })
-
-
-            
     </script>
 
 
 
 
-    <!-- <script>
+    <script>
         const svg2 = d3.select("#svg2"),
-                margin = 200,
+                margin = 150,
                 width2 = svg2.attr("width") - margin,
                 height2 = svg2.attr("height") - margin;
 
 
-        const xScale = d3.scaleBand().range([0, width]).padding(0.6),
+        const xScale = d3.scaleBand().range([0, width2]).padding(0.6),
               yScale = d3.scaleLinear().range([height2, 0]);
 
         const g = svg2.append("g")
@@ -165,13 +181,13 @@
 
         d3.csv("./data/yearData.csv").then(function (data) {
             xScale.domain(data.map(function (d) { return d.year; }));
-            yScale.domain([0, d3.max(data, function (d) { return d.issues; })]);
+            yScale.domain([0, 1300]);
 
             g.append("g")
                 .attr("transform", "translate(0," + height2 + ")")
                 .call(d3.axisBottom(xScale))
                 .append("text")
-                .attr("y", height2 - 250)
+                .attr("y", height2 - 200)
                 .attr("x", width2 - 100)
                 .attr("text-anchor", "end")
                 .attr("stroke", "black")
@@ -181,7 +197,7 @@
                 .call(d3.axisLeft(yScale)
                     .tickFormat(function (d) {
                         return d;
-                    }).ticks(15))
+                    }).ticks(10))
                 .append("text")
                 .attr("transform", "rotate(-90)")
                 .attr("y", 6)
@@ -228,10 +244,10 @@
                 g.append("text")
                     .attr('class', 'val')
                     .attr('x', function () {
-                        return xScale(d.year) - 5;
+                        return xScale(d.year) + 10;
                     })
                     .attr('y', function () {
-                        return yScale(d.issues) - 15;
+                        return yScale(d.issues) - 20;
                     })
                     .text(function () {
                         return [d.issues]; 
@@ -251,7 +267,244 @@
                     .remove()
             }
 
-    </script> -->
+    </script>
+
+    <script>
+    dataset = {
+    "children": [{
+    "title": "Avengers: Endgame",
+    "studio": "Marvel/Disney",
+    "boxOffice": 2797800564,
+    },
+    {
+    "title": "Avengers: Infinity War",
+    "studio": "Marvel/Disney",
+    "boxOffice": 2048359754
+    },
+    {
+    "title": "The Avengers",
+    "studio": "Marvel/Disney",
+    "boxOffice": 1518812988
+    },
+    {
+    "title": "Avengers: Age of Ultron",
+    "studio": "Marvel/Disney",
+    "boxOffice": 1405403694
+    },
+    {
+    "title": "Black Panther",
+    "studio": "Marvel/Disney",
+    "boxOffice": 1346913171
+    },
+    {
+    "title": "Incredibles 2",
+    "studio": "Disney/Pixar",
+    "boxOffice": 1242805359
+    },
+    {
+    "title": "Iron Man 3",
+    "studio": "Marvel/Disney",
+    "boxOffice": 1214811252
+    },
+    {
+    "title": "Captain America: Civil War",
+    "studio": "Marvel/Disney",
+    "boxOffice": 1153304495
+    },
+    {
+    "title": "Aquaman",
+    "studio": "DC/Warner Bros.",
+    "boxOffice": 2048359754
+    },
+    {
+    "title": "Spider-Man: Far From Home",
+    "studio": "Marvel/Sony",
+    "boxOffice": 1131927996
+    },
+    {
+    "title": "Captain Marvel",
+    "studio": "Marvel/Disney",
+    "boxOffice": 1128274794
+    },
+    {
+    "title": "The Dark Knight Rises",
+    "studio": "DC/Warner Bros.",
+    "boxOffice": 1081041287
+    },
+    {
+    "title": "Joker",
+    "studio": "DC/Warner Bros.",
+    "boxOffice": 1074251311
+    },
+    {
+    "title": "The Dark Knight",
+    "studio": "DC/Warner Bros.",
+    "boxOffice": 1004558444
+    },
+    {
+    "title": "Spider-Man 3",
+    "studio": "Marvel/Sony",
+    "boxOffice": 890871626
+    },
+    {
+    "title": "Spider-Man: Homecoming",
+    "studio": "Marvel/Sony",
+    "boxOffice": 880166924
+    },
+    {
+    "title": "Batman v. Superman: Dawn of Justice",
+    "studio": "DC/Warner Bros.",
+    "boxOffice": 873634919
+    },
+    {
+    "title": "Guardians of the Galaxy Vol. 2",
+    "studio": "Marvel/Disney",
+    "boxOffice": 863756051
+    },
+    {
+    "title": "Venom",
+    "studio": "Marvel/Sony",
+    "boxOffice": 856085151
+    },
+    {
+    "title": "Thor: Ragnarok",
+    "studio": "Marvel/Disney",
+    "boxOffice": 853977126
+    },
+    {
+    "title": "Wonder Woman",
+    "studio": "DC/Warner Bros.",
+    "boxOffice": 863756051
+    },
+    {
+    "title": "Spider-Man",
+    "studio": "Marvel/Sony",
+    "boxOffice": 821708551
+    },
+    {
+    "title": "Spider-Man 2",
+    "studio": "Marvel/Sony",
+    "boxOffice": 788976453
+    },
+    {
+    "title": "Deadpool 2",
+    "studio": "Marvel/20th Century Fox",
+    "boxOffice": 785046920
+    },
+    {
+    "title": "Deadpool",
+    "studio": "Marvel/20th Century Fox",
+    "boxOffice": 783112979
+    },
+    
+    ]
+    }
+    
+    const diameter = 900;
+    const color2 = d3.scaleOrdinal(d3.schemeCategory10);
+    
+    default_height = 650;
+    default_ratio = diameter / default_height;
+    
+
+    function set_size() {
+    current_width = window.innerWidth;
+    current_height = window.innerHeight;
+    current_ratio = current_width / current_height;
+
+    if (current_ratio > default_ratio) {
+    let diameter = 1200;
+    } else {
+    let diameter = 600;
+    }
+    };
+    set_size();
+    
+    const bubble = d3.pack(dataset)
+    .size([diameter, diameter])
+    .padding(.9);
+    
+    const svg3 = d3.select("#bubble")
+    .append("svg")
+    .attr("width", diameter)
+    .attr("height", diameter)
+    .attr("class", "bubble");
+    
+    const nodes = d3.hierarchy(dataset)
+    .sum(function (d) {
+    return d.boxOffice;
+    });
+    
+    
+    const node = svg3.selectAll(".node")
+    .data(bubble(nodes).descendants())
+    .enter()
+    .filter(function (d) {
+    return !d.children
+    })
+    .append("g")
+    .on('mouseover', function (d, i) {
+    d3.select(this).transition()
+    .duration('100')
+    .attr('opacity', '.7');
+    })
+    .on('mouseout', function (d, i) {
+    d3.select(this).transition()
+    .duration('100')
+    .attr('opacity', '1');
+    })
+    .attr("class", "node")
+    .attr("transform", function (d) {
+    return "translate(" + d.x + "," + d.y + ")";
+    });
+    
+    node.append("title")
+    .text(function (d) {
+    return d.title;
+    });
+
+    node.append("studio")
+    .text(function (d) {
+    return d.studio;
+    });
+    
+    node.append("circle")
+    .attr("r", function (d) {
+    return d.r;
+    })
+    .style("fill", function (d, i) {
+    return color2(i);
+    });
+    
+    node.append("text")
+    .attr("dy", ".03em")
+    .style("text-anchor", "middle")
+    .text(function (d) {
+    return d.data.title;
+    })
+    .attr("font-size", function (d) {
+    return d.r / 5;
+    })
+    .attr("fill", "white");
+
+    
+    node.append("text")
+    .attr("dy", "1.3em")
+    .style("text-anchor", "middle")
+    .text(function (d) {
+    return "$" + d.data.boxOffice.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+    })
+    .attr("font-size", function (d) {
+    return d.r / 5;
+    })
+    .attr("fill", "white");
+    
+    d3.select(self.frameElement)
+    .style("height", diameter + "px");
+
+    
+
+</script>
 
 </body>
 </html>
