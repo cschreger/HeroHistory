@@ -7,11 +7,40 @@ div {
   margin-bottom: 3px;
 }
 
+.header-bar-container {
+  display: flex;
+  justify-content: center;
+}
+
 .header-bar {
-  display: flex
+  display: flex;
+  justify-content: center;
+  border: 5px solid black;
+  width: 70%
 }
 
 h1 {
   font-family: 'Courier New', Courier, monospace;
   color: red;
+}
+
+svg {
+  fill: orange;
+}
+
+svg text {
+  fill:black;
+  font: 10px sans-serif;
+  text-anchor: end;
+}
+
+.bar {
+  fill: steelblue;
+ }
+
+button {
+  color: white;
+  border-radius: 5px;
+  background-color: rgb(28, 184, 65);
+  border: 0.3 px solid #e8e8e8;
 }

@@ -1,73 +1,108 @@
-// var margin = { top: 20, right: 20, bottom: 30, left: 40 },
-//   width = 960 - margin.left - margin.right,
-//   height = 500 - margin.top - margin.bottom;
+export const yearBreakdown = () => {
 
-// // set the ranges
-// var x = d3.scaleBand().range([0, width]).padding(0.1);
-// var y = d3.scaleLinear().range([height, 0]);
+d3.select("body")
+  .append("svg")
+  .attr("id", "svg2")
+  .attr("width", 1200)
+  .attr("height", 700)
 
-// // append the svg object to the body of the page
-// // append a 'group' element to 'svg'
-// // moves the 'group' element to the top left margin
-// var svg = d3
-//   .select("body")
-//   .append("svg")
-//   .attr("width", width + margin.left + margin.right)
-//   .attr("height", height + margin.top + margin.bottom)
-//   .append("g")
-//   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+const svg2 = d3.select("#svg2"),
+  margin = 150,
+  width2 = svg2.attr("width") - margin,
+  height2 = svg2.attr("height") - margin;
 
-// // get the data
-// d3.csv("sales.csv", function (error, data) {
-//   if (error) throw error;
 
-//   // format the data
-//   data.forEach(function (d) {
-//     d.sales = +d.sales;
-//   });
+const xScale = d3.scaleBand().range([0, width2]).padding(0.6),
+  yScale = d3.scaleLinear().range([height2, 0]);
 
-//   // Scale the range of the data in the domains
-//   x.domain(
-//     data.map(function (d) {
-//       return d.salesperson;
-//     })
-//   );
-//   y.domain([
-//     0,
-//     d3.max(data, function (d) {
-//       return d.sales;
-//     }),
-//   ]);
+const g = svg2.append("g")
+  .attr("transform", "translate(" + 100 + "," + 100 + ")");
 
-//   // append the rectangles for the bar chart
-//   svg
-//     .selectAll(".bar")
-//     .data(data)
-//     .enter()
-//     .append("rect")
-//     .attr("class", "bar")
-//     .attr("x", function (d) {
-//       return x(d.salesperson);
-//     })
-//     .attr("width", x.bandwidth())
-//     .attr("y", function (d) {
-//       return y(d.sales);
-//     })
-//     .attr("height", function (d) {
-//       return height - y(d.sales);
-//     });
+d3.csv("./data/yearData.csv").then(function (data) {
+  xScale.domain(data.map(function (d) { return d.year; }));
+  yScale.domain([0, 1300]);
 
-//   // add the x Axis
-//   svg
-//     .append("g")
-//     .attr("transform", "translate(0," + height + ")")
-//     .call(d3.axisBottom(x));
+  g.append("g")
+    .attr("transform", "translate(0," + height2 + ")")
+    .call(d3.axisBottom(xScale))
+    .append("text")
+    .attr("y", height2 - 200)
+    .attr("x", width2 - 100)
+    .attr("text-anchor", "end")
+    .attr("stroke", "black")
+    .text("Year");
 
-//   // add the y Axis
-//   svg.append("g").call(d3.axisLeft(y));
-// });
+  g.append("g")
+    .call(d3.axisLeft(yScale)
+      .tickFormat(function (d) {
+        return d;
+      }).ticks(10))
+    .append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 6)
+    .attr("dy", "-5.1em")
+    .attr("text-anchor", "end")
+    .attr("stroke", "black")
+    .text("(Unique) issues released");
 
-export const years = d3.json("../../data/marvel_years.json", function (data) {
-  console.log(data);
+  svg2.append("text")
+    .attr("transform", "translate(100,0)")
+    .attr("x", 50)
+    .attr("y", 50)
+    .attr("font-size", "24px")
+    .text("# of releases (Marvel)")
+
+  g.selectAll(".bar")
+    .data(data)
+    .enter().append("rect")
+    .attr("class", "bar")
+    .on("mouseover", onMouseOver)
+    .on("mouseout", onMouseOut)
+    .attr("x", function (d) { return xScale(d.year); })
+    .attr("y", function (d) { return yScale(0); })
+    .attr("width", xScale.bandwidth())
+    .attr("height", function (d) { return height2 - yScale(0); });
+
+  svg2.selectAll("rect")
+    .transition()
+    .duration(1200)
+    .attr("y", function (d) { return yScale(d.issues) })
+    .attr("height", function (d) { return height2 - yScale(d.issues) })
+    .delay(function (d, i) { return (i * 13) })
 });
 
+function onMouseOver(d, i) {
+  d3.select(this).attr('class', 'highlight');
+  d3.select(this)
+    .transition()
+    .duration(400)
+    .attr('width', xScale.bandwidth() + 2)
+    .attr("y", function (d) { return yScale(d.issues) - 10; })
+    .attr("height", function (d) { return height2 - yScale(d.issues) + 10; });
+
+  g.append("text")
+    .attr('class', 'val')
+    .attr('x', function () {
+      return xScale(d.year) + 10;
+    })
+    .attr('y', function () {
+      return yScale(d.issues) - 20;
+    })
+    .text(function () {
+      return [d.issues];
+    });
+}
+
+function onMouseOut(d, i) {
+  d3.select(this).attr('class', 'bar');
+  d3.select(this)
+    .transition()
+    .duration(400)
+    .attr('width', xScale.bandwidth())
+    .attr("y", function (d) { return yScale(d.issues); })
+    .attr("height", function (d) { return height2 - yScale(d.issues); });
+
+  d3.selectAll('.val')
+    .remove()
+}
+}
