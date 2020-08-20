@@ -28,6 +28,18 @@ svg {
   fill: orange;
 }
 
+/* .axis path {
+  fill: none
+}
+
+.x.axis path {
+  display: none
+} */
+
+.line {
+  fill: none
+}
+
 svg text {
   fill:black;
   font: 10px sans-serif;
