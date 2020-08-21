@@ -130,10 +130,10 @@ const dataset = {
     ]
 }
 
-const diameter = 900;
+let diameter = 900;
 const color2 = d3.scaleOrdinal(d3.schemeCategory10);
 
-const default_height = 650;
+const default_height = 750;
 const default_ratio = diameter / default_height;
 
 

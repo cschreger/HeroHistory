@@ -4,7 +4,7 @@ d3.select("#chart-container")
   .append("svg")
   .attr("id", "bar-chart")
   .attr("width", 1200)
-  .attr("height", 700)
+  .attr("height", 500)
 
 const svg2 = d3.select("#bar-chart"),
   margin = 150,
@@ -82,14 +82,15 @@ function onMouseOver(d, i) {
 
   g.append("text")
     .attr('class', 'val')
+    .attr('id', 'issues')
     .attr('x', function () {
-      return xScale(d.year) + 10;
+      return 590;
     })
     .attr('y', function () {
-      return yScale(d.issues) - 20;
+      return 10;
     })
     .text(function () {
-      return [d.issues];
+      return `${[d.issues]} issues released in ${d.year}`;
     });
 }
 

@@ -20,6 +20,8 @@ function goYearBreakdown () {
     } else if (document.querySelector("#donut-chart") !== null) {
         let elem = document.querySelector("#donut-chart")
         elem.parentNode.removeChild(elem)
+        let elem2 = document.querySelector('#donut-tip')
+        elem2.parentNode.removeChild(elem2)
         document.querySelector("#gender-breakdown").removeAttribute("class")
     } else if (document.querySelector("#bubble-chart") !== null) {
         let elem = document.querySelector("#bubble-chart")
@@ -64,11 +66,16 @@ function goBoxOfficeBubble () {
     } else if (document.querySelector("#donut-chart") !== null) {
         let elem = document.querySelector("#donut-chart")
         elem.parentNode.removeChild(elem)
+        let elem2 = document.querySelector('#donut-tip')
+        elem2.parentNode.removeChild(elem2)
         document.querySelector("#gender-breakdown").removeAttribute("class")
     }
 
     let button = document.getElementById("box-office")
     button.classList.add("clicked")
+    let body = document.getElementById("body")
+    debugger
+    d3.select(body).transition("500").attr("background-image", "background-image: radial-gradient(circle 248px at center, #16d9e3 0%, #30c7ec 47%, #46aef7 100%");
     boxOfficeBubble();
 }
 
@@ -80,6 +87,8 @@ function goMarketShare () {
     } else if (document.querySelector("#donut-chart") !== null) {
         let elem = document.querySelector("#donut-chart")
         elem.parentNode.removeChild(elem)
+        let elem2 = document.querySelector('#donut-tip')
+        elem2.parentNode.removeChild(elem2)
         document.querySelector("#gender-breakdown").removeAttribute("class")
     } else if (document.querySelector("#bubble-chart") !== null) {
         let elem = document.querySelector("#bubble-chart")

@@ -9,15 +9,9 @@ function graph(data) {
     const margin = {top:20, right: 40, bottom: 20, left: 40}
     const width = 900 - margin.left - margin.right
     const height = 600 - margin.top - margin.bottom
-
-    data.forEach(function(d) {
-        return d
-    })
-    
-    const xScale = d3.scaleTime().range([0,width])
+    const xScale = d3.scaleLinear().range([0,width])
     const yScale = d3.scaleLinear().range([height, 0])
     const color = d3.scaleOrdinal(d3.schemeCategory10);
-    
     const xAxis = d3.axisBottom(xScale)
     const yAxis = d3.axisLeft(yScale)
 
