@@ -1,10 +1,17 @@
 body {
   color: #cfcfcf;
-  margin: 100px;
+  margin: 70px;
 }
+
 div {
   line-height: 15px;
   margin-bottom: 3px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 15px;
 }
 
 .header-bar-container {
@@ -16,7 +23,7 @@ div {
   display: flex;
   justify-content: center;
   border: 5px solid black;
-  width: 70%
+  width: 50%
 }
 
 h1 {
@@ -26,6 +33,9 @@ h1 {
 
 svg {
   fill: orange;
+  margin-top: 30px;
+  border: 0.3px dotted blueviolet;
+  padding: 25px;
 }
 
 /* .axis path {
@@ -56,9 +66,32 @@ button {
   border-radius: 5px;
   background-color: rgb(28, 184, 65);
   border: 0.3 px solid #e8e8e8;
+  font-family: sans-serif;
+  font-size: 14px;
+  color: blue
 }
 
 .clicked {
   pointer-events: none;
   opacity: .2;
+}
+
+.node > text {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+p {
+  font-family: "Bangers";
+  color: #0084ff
+}
+
+.sub-header-container {
+  display: flex;
+  justify-content: center;
+
+}
+
+#chart-container {
+  display: flex;
+  justify-content: center;
 }

@@ -20,7 +20,7 @@ const radius = Math.min(width, height) / 2;
 const donutWidth = 75;
 const color = d3.scaleOrdinal(d3.schemeCategory10);
 
-d3.select("body")
+d3.select("#chart-container")
     .append("svg")
     .attr("id", "donut-chart")
 

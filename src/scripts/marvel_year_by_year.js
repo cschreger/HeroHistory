@@ -1,6 +1,6 @@
 export const yearBreakdown = () => {
 
-d3.select("body")
+d3.select("#chart-container")
   .append("svg")
   .attr("id", "bar-chart")
   .attr("width", 1200)

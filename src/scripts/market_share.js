@@ -31,7 +31,7 @@ function graph(data) {
     })
     .curve(d3.curveCardinal)
     
-    const svg = d3.select("body")
+    const svg = d3.select("#chart-container")
         .append("svg")
         .attr("id", "line-chart")
         .attr("width", width + margin.left + margin.right)

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./src/styles/main.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="./images/favicon.png">
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <title>HeroHistory</title>
@@ -13,21 +14,25 @@
 
 <body>
     <div class="header-bar-container">
-    <div class="header-bar">
-        <img class="logo" src="./images//logo.png">
-    </div>
+        <div class="header-bar">
+            <img class="logo" src="./images//logo.png">
+        </div>
     </div>
 
-    <p>A few infographics about your favorite comic book publishers and movies!</p>
+    <div class="sub-header-container">
+    <p>Infographics about your favorite comic book publishers and movies!</p>
+    </div>
     
-    <div>
-        <button id="year-breakdown">Year-By-Year Breakdown (Marvel)</button>
+    <div class="button-container">
+        <button id="year-breakdown">Yearly Issues Released (Marvel)</button>
         <button id="gender-breakdown">Gender Breakdown (All Publishers)</button>
         <button id="box-office">Top 25 Highest-Grossing Superhero Movies (All Studios)</button>
-        <button id="market-share">Market Share</button>
+        <button id="market-share">Market Share (Comic Book Sales)</button>
 
     </div>
-    
+
+    <div id="chart-container"></div>
+
     <script src="./dist/main.js"></script>
         
 </body>
