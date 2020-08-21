@@ -22,9 +22,9 @@ const color = d3.scaleOrdinal(d3.schemeCategory10);
 
 d3.select("body")
     .append("svg")
-    .attr("id", "donut-svg")
+    .attr("id", "donut-chart")
 
-const svg = d3.select('#donut-svg')
+const svg = d3.select('#donut-chart')
     // .append(svg)
     .attr('width', width)
     .attr('height', height)

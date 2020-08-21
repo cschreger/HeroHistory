@@ -16,7 +16,6 @@ function graph(data) {
     
     const xScale = d3.scaleTime().range([0,width])
     const yScale = d3.scaleLinear().range([height, 0])
-    const zScale = d3.scaleOrdinal(d3.schemeCategory10);
     const color = d3.scaleOrdinal(d3.schemeCategory10);
     
     const xAxis = d3.axisBottom(xScale)
@@ -34,6 +33,7 @@ function graph(data) {
     
     const svg = d3.select("body")
         .append("svg")
+        .attr("id", "line-chart")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
@@ -91,7 +91,7 @@ function graph(data) {
         })
     
     legend.append('text')
-        .attr('x', width - 8)
+        .attr('x', width - 25)
         .attr('y', function(d,i) {
             return (i * 20) + 9;
         })
@@ -109,7 +109,7 @@ function graph(data) {
         .call(yAxis)
         .append("text")
         .attr("transform", "rotate(-90)")
-        .attr("y", 6)
+        .attr("y", 8)
         .attr("dy", ".7em")
         .style("text-anchor", "end")
         .text("Market Share (%)")
@@ -140,8 +140,8 @@ function graph(data) {
     .attr("transform", function(d) {
         return "translate(" + xScale(d.value.year) + "," + yScale(d.value.share) + ")"
     })
-    .attr("x", 3)
-    .attr("dy", ".35em")
+    .attr("x", 36)
+    .attr("dy", ".85em")
     .text(function(d) {
         return d.name
     })
@@ -175,7 +175,7 @@ function graph(data) {
 
     mousePerLine.append("text")
         .attr("transform", "translate(10,3)");
-
+    debugger
     mouseG.append('svg:rect') // append a rect to catch mouse movements on canvas
         .attr('width', width) // can't catch mouse events on a g element
         .attr('height', height)
@@ -205,19 +205,19 @@ function graph(data) {
                     d += " " + mouse[0] + "," + 0;
                     return d;
                 });
-
+            debugger
             d3.selectAll(".mouse-per-line")
                 .attr("transform", function (d, i) {
                     const xYear = xScale.invert(mouse[0]),
                         bisect = d3.bisector(function (d) { return d.year; }).right;
                     const idx = bisect(d.values, xYear);
 
-                    let beginning = 0,
-                        end = lines[i].getTotalLength(),
-                        target = null;
+                    let beginning = 0
+                    let end = lines[i].getTotalLength()
+                    let target = null;
 
                     while (true) {
-                        const target = Math.floor((beginning + end) / 2);
+                        let target = Math.floor((beginning + end) / 2);
                         let pos = lines[i].getPointAtLength(target);
                         if ((target === end || target === beginning) && pos.x !== mouse[0]) {
                             break;
@@ -226,11 +226,11 @@ function graph(data) {
                         else if (pos.x < mouse[0]) beginning = target;
                         else break; //position found
                     }
-
+                    debugger
                     d3.select(this).select('text')
                         .text(yScale.invert(pos.y).toFixed(2));
-
-                    return "translate(" + mouse[0] + "," + pos.y + ")";
+                    debugger
+                    return "translate(" + mouse[0] + "," + lines[i].getPointAtLength(target).y + ")";
                 });
         });
 

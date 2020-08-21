@@ -2,11 +2,11 @@ export const yearBreakdown = () => {
 
 d3.select("body")
   .append("svg")
-  .attr("id", "svg2")
+  .attr("id", "bar-chart")
   .attr("width", 1200)
   .attr("height", 700)
 
-const svg2 = d3.select("#svg2"),
+const svg2 = d3.select("#bar-chart"),
   margin = 150,
   width2 = svg2.attr("width") - margin,
   height2 = svg2.attr("height") - margin;

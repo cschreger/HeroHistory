@@ -154,8 +154,9 @@ const bubble = d3.pack(dataset)
     .size([diameter, diameter])
     .padding(.9);
 
-const svg3 = d3.select("#bubble")
+const svg3 = d3.select("body")
     .append("svg")
+    .attr("id", "bubble-chart")
     .attr("width", diameter)
     .attr("height", diameter)
     .attr("class", "bubble");
