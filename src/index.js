@@ -75,7 +75,7 @@ function goBoxOfficeBubble () {
     button.classList.add("clicked")
     let body = document.getElementById("body")
     debugger
-    d3.select(body).transition("500").attr("background-image", "background-image: radial-gradient(circle 248px at center, #16d9e3 0%, #30c7ec 47%, #46aef7 100%");
+    body.setAttribute("style", "background: linear-gradient(to bottom, #43cea2, #185a9d);");
     boxOfficeBubble();
 }
 
