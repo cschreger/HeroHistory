@@ -45,6 +45,7 @@ On HeroHistory, users will be able to:
 
 ## Technologies
 
+* D3.js
 * Javascript
 * HTML/CSS
 
