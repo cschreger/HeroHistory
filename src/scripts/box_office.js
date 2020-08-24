@@ -157,9 +157,15 @@ const bubble = d3.pack(dataset)
 const svg3 = d3.select("#chart-container")
     .append("svg")
     .attr("id", "bubble-chart")
+    .attr("width", 0)
+    .attr("height", 0)
+    .attr("class", "bubble");
+
+d3.selectAll("svg")
+    .transition()
+    .duration(1200)
     .attr("width", diameter)
     .attr("height", diameter)
-    .attr("class", "bubble");
 
 const nodes = d3.hierarchy(dataset)
     .sum(function (d) {
