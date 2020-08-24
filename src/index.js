@@ -1,9 +1,9 @@
 import './styles/main.css';
-import './scripts/box_office';
 import {yearBreakdown} from './scripts/marvel_year_by_year';
 import {genderDonut} from './scripts/gender_donut';
 import {boxOfficeBubble} from './scripts/box_office'
 import {marketShare} from './scripts/market_share'
+import { transition } from 'd3';
 
 
 document.querySelector("#year-breakdown").addEventListener("click", goYearBreakdown)
@@ -31,6 +31,8 @@ function goYearBreakdown () {
     
     let button = document.getElementById("year-breakdown")
     button.classList.add("clicked")
+    let body = document.getElementById("body")
+    body.style.background = "#39cccc";
     yearBreakdown();
 }
 
@@ -51,6 +53,8 @@ function goGenderBreakdown () {
 
     let button = document.getElementById("gender-breakdown")
     button.classList.add("clicked")
+    let body = document.getElementById("body")
+    body.style.background = "#7fbdff"
     genderDonut();
 }
 
@@ -74,8 +78,7 @@ function goBoxOfficeBubble () {
     let button = document.getElementById("box-office")
     button.classList.add("clicked")
     let body = document.getElementById("body")
-    debugger
-    body.setAttribute("style", "background: linear-gradient(to bottom, #43cea2, #185a9d);");
+    body.style.background = "#92a8d1"
     boxOfficeBubble();
 }
 
@@ -96,7 +99,9 @@ function goMarketShare () {
         document.querySelector("#box-office").removeAttribute("class")
     }
 
-    let button = document.getElementById("market-share")
-    button.classList.add("clicked")
+    let button = document.getElementById("market-share");
+    button.classList.add("clicked");
+    let body = document.getElementById("body");
+    body.style.background = "#7FCDCD";
     marketShare();
 }
