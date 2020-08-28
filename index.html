@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./src/styles/main.css" />
     <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="./images/favicon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/konpa/devicon@master/devicon.min.css">
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <title>HeroHistory</title>
 
@@ -21,6 +22,11 @@
             <!-- <img class="logo" src="./images//logo.png"> -->
             <p id="logo">HeroHistory</p>
             <p id="info">Infographics about your favorite comic book publishers and movies!</p>
+            <!-- <div id="personal">
+                Created by Cade Schreger.
+                <a href="https://github.com/cschreger" target="_blank">Github</a>
+                <a href="https://www.linkedin.com/in/cade-schreger-01048aab/" target="_blank">LinkedIn</a>
+            </div> -->
         </div>
     </div>
 
@@ -29,14 +35,24 @@
     
     <div class="button-container">
         <button id="year-breakdown">Yearly Issues Released (Marvel)</button>
-        <button id="gender-breakdown">Gender Breakdown (All Publishers)</button>
+        <button id="gender-breakdown">Character Gender (All Publishers)</button>
         <button id="box-office">Top 25 Highest-Grossing Superhero Movies (All Studios)</button>
         <button id="market-share">Market Share (Comic Book Sales)</button>
 
     </div>
 
     <div id="chart-container"></div>
-    <div id="footer"></div>
+    <div id="footer">
+        <div id="personal">
+            Created by Cade Schreger
+            <a href="https://github.com/cschreger" target="_blank">
+                <i class="devicon-github-plain colored"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/cade-schreger-01048aab/" target="_blank">
+                <i class="devicon-linkedin-plain colored"></i>
+            </a>
+        </div>
+    </div>
     <script src="./dist/main.js"></script>
         
 </body>

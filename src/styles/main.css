@@ -103,7 +103,14 @@ button:hover {
 #info {
   font-family: "Bangers";
   color: #ff0000;
-  font-size: 22px
+  font-size: 22px;
+  margin-top: 10px;
+}
+
+#personal {
+  font-family: "Bangers";
+  color: #004200;
+  font-size: 20px
 }
 
 .sub-header-container {
@@ -138,4 +145,15 @@ g {
 
 #footer  {
   height: 100px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: fixed;
+  bottom: -25px;
+  width: 92%
+}
+
+a { 
+  text-decoration: none;
+  padding-left: 7px;
 }
