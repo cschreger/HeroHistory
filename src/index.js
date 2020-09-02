@@ -4,14 +4,24 @@ import {genderDonut} from './scripts/gender_donut';
 import {boxOfficeBubble} from './scripts/box_office'
 import {marketShare} from './scripts/market_share'
 import { transition } from 'd3';
+import {splash} from './scripts/splash_page';
 
 
 document.querySelector("#year-breakdown").addEventListener("click", goYearBreakdown)
 document.querySelector("#gender-breakdown").addEventListener("click", goGenderBreakdown)
 document.querySelector("#box-office").addEventListener("click", goBoxOfficeBubble)
 document.querySelector("#market-share").addEventListener("click", goMarketShare)
+// document.querySelector("#splash").addEventListener("click", goSplash)
 
-debugger
+
+// function goSplash () {
+//     let button = document.getElementById("year-breakdown")
+//     button.classList.add("clicked")
+//     let body = document.getElementById("body")
+//     body.style.background = "#39cccc";
+//     splash();
+// }
+
 function goYearBreakdown () {
     if (document.querySelector("#line-chart") !== null) {
         let elem = document.querySelector("#line-chart")

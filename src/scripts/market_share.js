@@ -8,7 +8,7 @@ function graph(data) {
     const keys = data.columns.slice(1);
     const margin = {top:20, right: 40, bottom: 20, left: 40}
     const width = 900 - margin.left - margin.right
-    const height = 600 - margin.top - margin.bottom
+    const height = 500 - margin.top - margin.bottom
     const xScale = d3.scaleLinear().range([0,width])
     const yScale = d3.scaleLinear().range([height, 0])
     const color = d3.scaleOrdinal(d3.schemeCategory10);
@@ -123,7 +123,6 @@ function graph(data) {
             return color(d.name)
         })
 
-    debugger
     company.append("text")
     .datum(function(d) {
         return {
@@ -169,7 +168,7 @@ function graph(data) {
 
     mousePerLine.append("text")
         .attr("transform", "translate(10,3)");
-    debugger
+
     mouseG.append('svg:rect') // append a rect to catch mouse movements on canvas
         .attr('width', width) // can't catch mouse events on a g element
         .attr('height', height)
@@ -199,7 +198,7 @@ function graph(data) {
                     d += " " + mouse[0] + "," + 0;
                     return d;
                 });
-            debugger
+
             d3.selectAll(".mouse-per-line")
                 .attr("transform", function (d, i) {
                     const xYear = xScale.invert(mouse[0]),
@@ -220,11 +219,10 @@ function graph(data) {
                         else if (pos.x < mouse[0]) beginning = target;
                         else break; //position found
                     }
-                    debugger
+
                     d3.select(this).select('text')
                         .text(yScale.invert(pos.y).toFixed(2));
-                    debugger
-                    return "translate(" + mouse[0] + "," + lines[i].getPointAtLength(target).y + ")";
+                        return "translate(" + mouse[0] + "," + lines[i].getPointAtLength(target).y + ")";
                 });
         });
 

@@ -14,8 +14,8 @@ const total = [
         count: 16626
     }]
 
-const height = 540;
-const width = 540;
+const height = 500;
+const width = 500;
 const radius = Math.min(width, height) / 2;
 const donutWidth = 100;
 const color = d3.scaleOrdinal(d3.schemeCategory10);
@@ -63,8 +63,8 @@ const path = svg.selectAll('path')
 
 svg.append("text")
     .attr("transform", "translate(100,0)")
-    .attr("x", -25)
-    .attr("y", 50)
+    .attr("x", -10)
+    .attr("y", 70)
     .text("Character gender (All Publishers)")
 
 function tweenPie(b) {
@@ -81,8 +81,8 @@ function onMouseOver(d, i) {
         .style("opacity", 1)
     let num = (Math.round((d.data.count / 140000) * 100)).toString() + "%"
     donutTip.html(num)
-        .style("left", (d3.event.pageX + 210) + "px")
-        .style("top", (d3.event.pageY - 315) + "px")
+        .style("left", (d3.event.pageX + 515) + "px")
+        .style("top", (d3.event.pageY - 50) + "px")
 }
 
 function onMouseOut(d, i) {
@@ -118,8 +118,8 @@ legend.append('circle')
     .attr('r', '.5rem')
 
 legend.append('text')
-    .attr('x', legendRectSize + legendSpacing + 25)
-    .attr('y', legendRectSize - legendSpacing + 3)
+    .attr('x', legendRectSize + legendSpacing + 37)
+    .attr('y', legendRectSize - legendSpacing + 5)
     .text(function (d) {
         return d;
 })
