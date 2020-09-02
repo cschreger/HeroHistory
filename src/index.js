@@ -3,7 +3,6 @@ import {yearBreakdown} from './scripts/marvel_year_by_year';
 import {genderDonut} from './scripts/gender_donut';
 import {boxOfficeBubble} from './scripts/box_office'
 import {marketShare} from './scripts/market_share'
-import { transition } from 'd3';
 import {splash} from './scripts/splash_page';
 
 
@@ -23,6 +22,11 @@ document.querySelector("#market-share").addEventListener("click", goMarketShare)
 // }
 
 function goYearBreakdown () {
+    if (document.querySelector("#tree") !== null) {
+        let elem = document.querySelector("#tree")
+        elem.parentNode.removeChild(elem) 
+    }
+
     if (document.querySelector("#line-chart") !== null) {
         let elem = document.querySelector("#line-chart")
         elem.parentNode.removeChild(elem)
@@ -47,6 +51,11 @@ function goYearBreakdown () {
 }
 
 function goGenderBreakdown () {
+    if (document.querySelector("#tree") !== null) {
+        let elem = document.querySelector("#tree")
+        elem.parentNode.removeChild(elem)
+    }
+
     if (document.querySelector("#line-chart") !== null) {
         let elem = document.querySelector("#line-chart")
         elem.parentNode.removeChild(elem)
@@ -69,6 +78,11 @@ function goGenderBreakdown () {
 }
 
 function goBoxOfficeBubble () {
+    if (document.querySelector("#tree") !== null) {
+        let elem = document.querySelector("#tree")
+        elem.parentNode.removeChild(elem)
+    }
+
     if (document.querySelector("#line-chart") !== null) {
         let elem = document.querySelector("#line-chart")
         elem.parentNode.removeChild(elem)
@@ -93,6 +107,11 @@ function goBoxOfficeBubble () {
 }
 
 function goMarketShare () {
+    if (document.querySelector("#tree") !== null) {
+        let elem = document.querySelector("#tree")
+        elem.parentNode.removeChild(elem)
+    }
+
     if (document.querySelector("#bar-chart") !== null) {
         let elem = document.querySelector("#bar-chart")
         elem.parentNode.removeChild(elem)

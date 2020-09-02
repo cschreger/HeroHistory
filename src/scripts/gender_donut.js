@@ -53,8 +53,6 @@ const path = svg.selectAll('path')
     .attr('fill', function (d, i) {
         return color(d.data.title)
     })
-    .on("mouseover", onMouseOver)
-    .on("mouseout", onMouseOut)
     .attr('transform', 'translate(0,0)')
     .transition()
     .ease(d3.easeLinear)
@@ -125,3 +123,5 @@ legend.append('text')
 })
 
 }
+
+// future: fix mouseover and mouseout
