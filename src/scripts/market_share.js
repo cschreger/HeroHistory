@@ -107,6 +107,8 @@ function graph(data) {
         .attr("dy", ".7em")
         .style("text-anchor", "end")
         .text("Market Share (%)")
+        .attr("y", "-40")
+        .attr("x", "-150")
 
     const company = svg.selectAll(".company")
         .data(companies)
@@ -219,10 +221,9 @@ function graph(data) {
                         else if (pos.x < mouse[0]) beginning = target;
                         else break; //position found
                     }
-
-                    d3.select(this).select('text')
-                        .text(yScale.invert(pos.y).toFixed(2));
-                        return "translate(" + mouse[0] + "," + lines[i].getPointAtLength(target).y + ")";
+    //                 d3.select(this).select('text')
+    //                     .text(yScale.invert(pos.y).toFixed(2));
+    //                     return "translate(" + mouse[0] + "," + lines[i].getPointAtLength(target).y + ")";
                 });
         });
 
