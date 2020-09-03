@@ -60,8 +60,9 @@ const path = svg.selectAll('path')
     .attrTween("d", tweenPie)
 
 svg.append("text")
+    .attr("id", "donut-text")
     .attr("transform", "translate(100,0)")
-    .attr("x", -10)
+    .attr("x", -193)
     .attr("y", 70)
     .text("Character gender (All Publishers)")
 
@@ -116,7 +117,8 @@ legend.append('circle')
     .attr('r', '.5rem')
 
 legend.append('text')
-    .attr('x', legendRectSize + legendSpacing + 37)
+    .attr("id", "donut-legend")
+    .attr('x', legendRectSize + legendSpacing)
     .attr('y', legendRectSize - legendSpacing + 5)
     .text(function (d) {
         return d;
