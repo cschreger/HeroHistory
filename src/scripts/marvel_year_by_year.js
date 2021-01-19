@@ -75,7 +75,7 @@ function onMouseOver(d, i) {
   d3.select(this).attr('class', 'highlight');
   d3.select(this)
     .transition()
-    .duration(400)
+    .duration(200)
     .attr('width', xScale.bandwidth() + 2)
     .attr("y", function (d) { return yScale(d.issues) - 10; })
     .attr("height", function (d) { return height2 - yScale(d.issues) + 10; });

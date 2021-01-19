@@ -8,16 +8,15 @@ On HeroHistory, users will be able to:
 
 - [x] View generalized information about superheroes (gender breakdown, studio/publisher, year of initial publication, associated media, etc.)
 
-- [] Display information about a specific hero (future feature)
-
 - [x] View data about a movie or generalized information about superhero movies (box office, year of release, studios, starring characters)
 
 - [x] Splash page main visualization (node tree) 
 
-## Demo:
-<figure class="video_container">
-  <iframe src="https://www.youtube.com/embed/enMumwvLAug" frameborder="0" allowfullscreen="true"> </iframe>
-</figure>
+- [] Display information about a specific hero (future feature)
+
+
+## Live Demo
+
 
 ## Wireframes:
 

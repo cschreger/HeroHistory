@@ -8,7 +8,7 @@ function graph(data) {
     const keys = data.columns.slice(1);
     const margin = {top:20, right: 40, bottom: 20, left: 40}
     const width = 900 - margin.left - margin.right
-    const height = 500 - margin.top - margin.bottom
+    const height = 550 - margin.top - margin.bottom
     const xScale = d3.scaleLinear().range([0,width])
     const yScale = d3.scaleLinear().range([height, 0])
     const color = d3.scaleOrdinal(d3.schemeCategory10);
@@ -97,6 +97,11 @@ function graph(data) {
         .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")")
         .call(xAxis)
+        .append('text')
+        .attr("y", 8)
+        .attr("dy", ".7em")
+        .style("text-anchor", "end")
+        .text("Year")
 
     svg.append("g")
         .attr("class", "y axis")
